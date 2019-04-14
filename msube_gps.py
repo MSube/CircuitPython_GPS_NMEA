@@ -64,8 +64,8 @@ class GPS:
 
     def parse(self, sentence, received):
         if self._debug: print('< {}'.format(sentence))
-        if sentence[0] != 36: return False # does not start with '$'
         if len(sentence) < 7: return False # too short
+        if sentence[0] != 36: return False # does not start with '$'
         if sentence[-3] != 42: return False # no '*', no checksum
         xsum = int(sentence[-2:],16)
         sentence = sentence[1:-3]
